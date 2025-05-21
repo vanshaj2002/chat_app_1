@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Real-Time Chat Application
 
 A modern, real-time chat application built with Next.js, TypeScript, Tailwind CSS, and Supabase. This application provides a seamless messaging experience with real-time updates, user authentication, and a responsive design.
@@ -40,7 +41,7 @@ A modern, real-time chat application built with Next.js, TypeScript, Tailwind CS
 - **Date Handling**: date-fns
 
 ## 📋 Prerequisites
-
+`1
 - Node.js 18.0 or later
 - npm or yarn
 - Supabase account (free tier available)
@@ -170,3 +171,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Supabase Documentation](https://supabase.com/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+=======
+# chat_app
+>>>>>>> c72935a6422af9fd55952ba11c184be9ceec9334
