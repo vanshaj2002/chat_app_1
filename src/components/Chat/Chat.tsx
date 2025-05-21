@@ -111,6 +111,11 @@ export default function Chat() {
     const lastMessageTime = lastMessage?.created_at || chat.updated_at;
     const unreadCount = chat.unread_count || 0;
     
+    // Safely get the last message content
+    const lastMessageContent = typeof lastMessage === 'string' 
+      ? lastMessage 
+      : lastMessage?.content || 'No messages yet';
+    
     return (
       <div 
         key={chat.id}
@@ -150,7 +155,7 @@ export default function Chat() {
           </div>
           <div className="flex justify-between items-center mt-1">
             <p className="text-sm text-gray-500 truncate">
-              {lastMessage?.content || 'No messages yet'}
+              {lastMessageContent}
             </p>
             {unreadCount > 0 && (
               <span className="bg-blue-500 text-white text-xs font-medium rounded-full h-5 w-5 flex items-center justify-center">
