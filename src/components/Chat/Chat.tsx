@@ -17,9 +17,9 @@ import {
 } from 'react-icons/fi';
 import { useChat } from '@/hooks/useChat';
 import { formatDistanceToNow, format } from 'date-fns';
-import { Chat, Message, User, SendMessagePayload } from '@/types/chat';
+import type { Chat as ChatType, Message, User, SendMessagePayload } from '@/types/chat';
 
-type ChatWithMembers = Chat & {
+type ChatWithMembers = ChatType & {
   members: User[];
   last_message?: {
     content: string;
