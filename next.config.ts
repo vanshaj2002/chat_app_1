@@ -2,10 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   compiler: {
     styledComponents: true,
   },
+  output: 'standalone',
   experimental: {
     serverActions: {
       bodySizeLimit: '2mb',
