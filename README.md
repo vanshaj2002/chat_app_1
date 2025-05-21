@@ -52,7 +52,7 @@ A modern, real-time chat application built with Next.js, TypeScript, Tailwind CS
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/himanshu102003/SDE-1.git
+git clone https://github.com/vanshaj2002/chat_app_1
 cd SDE-1
 ```
 
