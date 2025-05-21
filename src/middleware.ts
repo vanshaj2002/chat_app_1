@@ -8,18 +8,26 @@ export async function middleware(req: NextRequest) {
   
   const { data: { session } } = await supabase.auth.getSession();
   
-  // If user is not signed in and the current path is not /login or /signup
-  if (!session && !req.nextUrl.pathname.startsWith('/login') && !req.nextUrl.pathname.startsWith('/signup')) {
+  // Check if the current route is public
+  const isPublicRoute = publicRoutes.some(route => 
+    req.nextUrl.pathname === route || req.nextUrl.pathname.startsWith(`${route}/`)
+  );
+
+  // If user is not signed in and the current path is not public
+  if (!session && !isPublicRoute) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
   
-  // If user is signed in and the current path is /login or /signup, redirect to /dashboard
+  // If user is signed in and trying to access auth pages, redirect to dashboard
   if (session && (req.nextUrl.pathname === '/login' || req.nextUrl.pathname === '/signup')) {
     return NextResponse.redirect(new URL('/dashboard', req.url));
   }
   
   return res;
 }
+
+// List of public routes that don't require authentication
+const publicRoutes = ['/login', '/signup', '/'];
 
 export const config = {
   matcher: [
