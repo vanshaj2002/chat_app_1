@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabase/client';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -10,6 +10,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const supabase = createClientComponentClient();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,8 +26,9 @@ export default function LoginPage() {
       if (error) throw error;
 
       router.push('/dashboard');
+      router.refresh(); // Ensure the page updates with the new session
     } catch (error: any) {
-      setError(error.error_description || error.message);
+      setError(error.error_description || error.message || 'An error occurred during login');
     } finally {
       setLoading(false);
     }
